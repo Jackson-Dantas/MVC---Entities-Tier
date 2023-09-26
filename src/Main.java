@@ -29,7 +29,8 @@ public class Main {
         System.out.print("How many items to this order? ");
         int numberOfItens = sc.nextInt();
 
-        Order jose = new Order(new Client(clientName, email, clientBirth), new Date(), OrderStatus.valueOf(status));
+        Client jose = new Client(clientName, email, clientBirth);
+        Order firstOrder = new Order(jose, new Date(), OrderStatus.valueOf(status));
 
         for (int i = 1; i <= numberOfItens ; i++) {
 
@@ -43,10 +44,10 @@ public class Main {
             System.out.print("Quantity: ");
             int productQuantity = sc.nextInt();
 
-            jose.addItem(new OrderItem(productQuantity, new Product(productName, productPrice)));
+            firstOrder.addItem(new OrderItem(productQuantity, new Product(productName, productPrice)));
         }
 
-        System.out.println(jose.toStringBuilder());
+        System.out.println(firstOrder.toStringBuilder());
 
         sc.close();
 
